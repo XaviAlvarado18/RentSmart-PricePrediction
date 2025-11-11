@@ -1,0 +1,201 @@
+---
+title: "📈 RentaGT"
+subtitle: "Predicción de Precio de Alquileres en Ciudad de Guatemala (CRISP-DM)"
+author: |
+  - Kristopher Javier Alvarado López (Carné: 21188)  
+  - Melissa (Carné: 21212)
+  - Herber Sebastián Silva Muñoz
+format:
+  revealjs:
+    theme: solarized
+    transition: fade
+    slide-number: true
+    incremental: true
+    toc: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## 1) Introducción — Contexto del Negocio
+
+**RentaGT** (proptech, zonas **1–18** + **Carretera al Salvador**):  
+- Marketplace + equipo comercial.  
+- Ingresos por **comisión** y **servicios premium**.  
+- Mercado **heterogéneo** por zona/tipo → pequeñas variaciones de precio impactan **DoM** y **conversión**.
+
+---
+
+## 2) Introducción — Objetivos & Metodología
+
+**Objetivo**: Recomendación de **precio de alquiler (`rent_price_gtq`)** con **intervalo** y **explicaciones**.  
+**Metodología**: **CRISP-DM** (fase 1).  
+**Éxito de negocio** (ilustrativo): reducir error y DoM para capturar **≥ GTQ 40k/mes**.
+
+---
+
+## 3) Comprensión — Definición del Problema de ML
+
+- **Tipo**: Regresión (precio mensual en GTQ).  
+- **Inputs**: zona, tipo, tamaño, habitaciones/baños, antigüedad, piso/elevador, amenities, distancias, vista, ruido.  
+- **Output**: **precio recomendado + [p5, p95]** y **explicabilidad** (importancias/PDP).
+
+---
+
+## 4) Datos — ¿Cómo se genera el dataset?
+
+**Fuente**: `src/data_generation.py` (tu script).  
+- **Zonas** con configuración: `base_price_m2`, peso muestral, % apartamentos, distancia típica a negocios, prob. de seguridad/amenities.  
+- **Tamaños** coherentes por tipo y zona (más compactos en zonas verticales: 10/14/9/4/13/15; casas más grandes en **CES/16/15**).  
+- **Entorno**: distancias, **vista** (mejor en 15/16/CES/14), **ruido** (mayor en 10/9/4/13/1).  
+- **Target** por **fórmula explicable** (multiplicadores + aditivos) + ruido de mercado.
+
+---
+
+## 5) Datos — Variables Clave (MVP)
+
+- **Categorías**: `zone`, `property_type`, `age_bucket`, `is_premium_zone`.  
+- **Numéricas**: `size_m2`, `bedrooms`, `bathrooms`, `age_years`, `floor`, `price_per_m2`.  
+- **Binarias** (amenities): `has_security`, `has_pool`, `has_gym`, `has_social`, `furnished`, `balcony`, `garden`, `parking_spaces`, `pet_friendly`.  
+- **Entorno**: `distance_to_business_km`, `distance_to_transit_km`, `view_quality` (1–5), `noise_level` (1–5).  
+- **Target**: `rent_price_gtq`.
+
+---
+
+## 6) EDA — Insights de Distribución (según script)
+
+- **Mix por zona**: mayor **proporción de apartamentos** en **10/14/9/4/13/15**; más **casas** en **2/5/6/7/11/12/17/18/CES**.  
+- **Tamaño (m²)**: aptos ~**72–85 m²** (verticales más compactos); casas ~**135–160+ m²** (más en CES/16/15).  
+- **Antigüedad**: menor en **10/14/15/16/4/13**.  
+- **Elevador/piso**: edificios altos en verticales; **prima por pisos ≥ 8** con elevador.
+
+---
+
+## 7) EDA — Drivers del Precio (de la fórmula)
+
+**Multiplicadores (m):**
+- `m_age` ↓ con antigüedad (–0.6% por año, tope 40).  
+- `m_view` ↑ con vista (+3% por nivel sobre 3).  
+- `m_noise` ↓ con ruido (–2.5% por nivel sobre 3).  
+- `m_floor` ↑ en aptos (≥4: +3%; ≥8 con elevador: +6%).  
+- `m_center` y `m_transit` penalizan **distancias** vía `log1p(.)`.  
+
+**Aditivos (GTQ):** estacionamientos (**+175 c/u**), seguridad (**+250**), piscina (**+220**), gym (**+150**), social (**+120**), amueblado (**+350**), balcón (**+90**), jardín (**+180**), pet (**+60**).
+
+---
+
+## 8) EDA — Zonas (precio base m²)
+
+**Top zonas por `base_price_m2` (GTQ/m²):**  
+**Z14 ~158**, **Z10 ~148**, **Z16 ~140**, **Z15 ~138**, **CES ~130**, **Z9 ~120**, **Z4 ~115**, **Z13 ~110**.  
+➡ Esperamos **`price_per_m2`** y **`rent_price_gtq`** mayores en estas zonas; **distribuciones** sesgadas a aptos en 10/14/9/4/13/15.
+
+---
+
+## 9) EDA — Correlaciones esperadas con `rent_price_gtq`
+
+- **(+)** `size_m2`, `view_quality`, `parking_spaces`, `has_security`, `has_pool`, `has_gym`, `furnished`, `is_premium_zone`.  
+- **(–)** `age_years`, `noise_level`, `distance_to_business_km`, `distance_to_transit_km`.  
+- **Segmentos**: **premium** (10/14/15/16/CES) con **MAPE** objetivo más estricto.
+
+---
+
+## 10) Objetivos SMART (ML)
+
+- **Exactitud**: **MAPE ≤ 12%** global; **RMSE ≤ 950 GTQ**.  
+- **Robustez**: MAPE **≤ 10%** en zonas **premium**.  
+- **Operabilidad**: **100%** de runs con métricas/artefactos en **MLflow**.  
+- **Adopción**: **precio + [p5, p95]** y **explicaciones** para asesores.
+
+---
+
+## 11) Alcance (In/Out) — MVP
+
+**Incluye**: Regresión de **precio**, explicabilidad (importancias, **PDP/ICE**), **MLflow**, validación por **estratos** (premium vs. no).  
+**Excluye**: **DoM**/prob. de cierre, fraude/valuación comercial, pagos/contratación.
+
+---
+
+## 12) Métricas de Éxito
+
+- **Negocio**: Δ Ingresos/mes, Δ DoM, % publicaciones con precio recomendado.  
+- **Modelo**: RMSE, MAE, **MAPE**, R²; MAPE **por zona**; **calibration error**.  
+- **Operación**: latencia **< 300 ms** (API local), *uptime*.
+
+---
+
+## 13) Plan de Experimentos
+
+1) **Baseline**: `LinearRegression` + One-Hot (`zone`, `property_type`).  
+2) **Árboles**: `RandomForestRegressor`, `XGBoost` / `LightGBM`.  
+3) **Regularizados**: `Ridge`/`Lasso`/`ElasticNet`.  
+4) **Evaluación estratificada**: premium vs. no; apartamento vs. casa.
+
+---
+
+## 14) Validación & Partición
+
+- **K-Fold** estratificado por **is_premium_zone**.  
+- Chequeo de **leakage**; considerar separación temporal si aplica.  
+- Reporte de métricas **global** y por **segmento**; **intervalos [p5, p95]** por predicción.
+
+---
+
+## 15) MLflow — Tracking & Registro
+
+- **Experimento**: `rent-gtq-price-prediction`  
+- **Tags**: `model={linreg|rf|xgb|lgbm}`, `features={baseline|+amenities|+geo}`, `seed`, `split`.  
+- **Métricas**: RMSE/MAE/MAPE/R², MAPE por zona, calibration.  
+- **Artefactos**: importancias, residuales, **PDP/ICE**, **conf_interval**, esquema.  
+- **Modelo registrado**: `models:/rent-gtq-regressor`.
+
+---
+
+## 16) Entrega para el Negocio
+
+- **Precio recomendado** + **banda [p5, p95]**.  
+- **Explicaciones locales** (SHAP/feature importance por listing).  
+- **Controles**: reglas mín./máx. por zona, flags de extrapolación.
+
+---
+
+## 17) Integración Operativa (MVP)
+
+- **API** de predicción (**FastAPI**).  
+- **Docker** (imagen + compose opcional).  
+- **Inference logging** para monitoreo de **drift** y calidad.  
+- (Opcional) **Feast** como Feature Store.
+
+---
+
+## 18) Roadmap (6–8 semanas)
+
+| Semana | Entregable |
+|---|---|
+| 1 | Fase 1 — Comprensión (este deck) |
+| 2 | Fase 2 — EDA & supuestos |
+| 3–4 | Prep & Modelado (MLflow) |
+| 5 | Evaluación & Scorecards |
+| 6 | Despliegue (API + Docker) |
+| 7–8 | Extras: Feast, monitoreo, CI/CD |
+
+---
+
+## 19) Riesgos, Ética y Cumplimiento
+
+- **Privacidad**: sin PII; al migrar a datos reales → anonimización.  
+- **Ética**: sesgos por zona → métricas por segmento.  
+- **Técnicos**: overfitting / leakage → CV & validaciones; **domain gap** vs. datos reales.  
+- **Sostenibilidad**: versionado de datos/modelos, reproducibilidad.
+
+---
+
+## 20) Cierre — Próximos Pasos
+
+- **Validar EDA** con dataset generado (n, seed).  
+- Definir **baseline** y primeras comparativas.  
+- Acordar **criterios de adopción** con Comercial/Operaciones.  
+
+**Meta**: MVP con precio + intervalo + explicaciones listo para prueba con asesores.
+
