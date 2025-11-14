@@ -1,0 +1,10 @@
+{
+  "model_name": "LinearRegression",
+  "run_id": "a9db6a0a332e40a18a3967162e561f22",
+  "mae": 688.9269473198982,
+  "rmse": 940.3824339277357,
+  "r2": 0.9576514044781954,
+  "params": {
+    "fit_intercept": true
+  }
+}

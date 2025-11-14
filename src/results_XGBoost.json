@@ -1,0 +1,14 @@
+{
+  "model_name": "XGBoost",
+  "run_id": "1934187c93234fca979cfb19047d1260",
+  "mae": 73.45582438437495,
+  "rmse": 121.53112357799122,
+  "r2": 0.9992926977791724,
+  "params": {
+    "subsample": 1.0,
+    "n_estimators": 300,
+    "max_depth": 7,
+    "learning_rate": 0.1,
+    "colsample_bytree": 0.8
+  }
+}

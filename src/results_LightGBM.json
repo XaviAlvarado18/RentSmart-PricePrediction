@@ -1,0 +1,14 @@
+{
+  "model_name": "LightGBM",
+  "run_id": "cabff7c7b0d44d2b8e6cace8a539cd50",
+  "mae": 75.67533424403275,
+  "rmse": 123.57409111118864,
+  "r2": 0.9992687180644817,
+  "params": {
+    "subsample": 0.9,
+    "num_leaves": 50,
+    "n_estimators": 600,
+    "learning_rate": 0.05,
+    "colsample_bytree": 0.8
+  }
+}
