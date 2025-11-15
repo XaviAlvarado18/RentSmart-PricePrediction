@@ -1,0 +1,14 @@
+artifact_uri: file:///home/hsilv/RentSmart-PricePrediction/mlruns/0/cf15d44c730e49a9845a58120bac5fbe/artifacts
+end_time: 1763173818694
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cf15d44c730e49a9845a58120bac5fbe
+run_name: crawling-fly-499
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763173815209
+status: 3
+tags: []
+user_id: hsilv

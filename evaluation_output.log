@@ -1,0 +1,56 @@
+qt.qpa.plugin: Could not find the Qt platform plugin "wayland" in ""
+/home/hsilv/miniconda3/envs/rentsmart-evaluation/lib/python3.10/site-packages/mlflow/tracking/_tracking_service/utils.py:140: FutureWarning: Filesystem tracking backend (e.g., './mlruns') is deprecated. Please switch to a database backend (e.g., 'sqlite:///mlflow.db'). For feedback, see: https://github.com/mlflow/mlflow/issues/18534
+  return FileStore(store_uri, store_uri)
+/home/hsilv/RentSmart-PricePrediction/src/model_evaluation.py:597: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+  top_under = error_df.nsmallest(top_n, 'error')[error_df['error'] < 0].nlargest(top_n, 'abs_error')
+============================================================
+EVALUACION COMPREHENSIVA DEL MODELO
+============================================================
+
+1. Creando directorios necesarios...
+
+2. Cargando y preparando datos...
+Dropped highly correlated features: []
+   ✓ Datos preparados: Train=(3500, 47), Val=(750, 47), Test=(750, 47)
+
+3. Entrenando modelo RandomForest...
+   ✓ Modelo entrenado
+
+4. Extrayendo metadata para análisis...
+
+5. Ejecutando evaluación comprehensiva...
+   (Esto puede tomar varios minutos...)
+
+6. Generando reporte...
+   ✓ Reporte guardado en: comprehensive_evaluation_report.json
+
+============================================================
+RESUMEN DE RESULTADOS
+============================================================
+
+Métricas de Regresión:
+  mae: 98.9131
+  rmse: 223.5554
+  r2: 0.9977
+  mape: 0.8739
+
+Métricas de Clasificación:
+  accuracy: 0.9867
+  precision: 0.9867
+  recall: 0.9867
+  f1_score: 0.9867
+  auc_roc_ovr: 0.9984
+
+Impacto de Negocio:
+  accuracy_within_threshold: 1.00
+  avg_price: 10894.27
+  avg_commission_per_listing: 1089.43
+  expected_dom_reduction: 0.15
+  monthly_listings: 100.00
+  expected_additional_revenue_monthly: 16297.82
+  mean_pct_error: 0.87
+  median_pct_error: 0.44
+
+============================================================
+Evaluación completada exitosamente!
+============================================================

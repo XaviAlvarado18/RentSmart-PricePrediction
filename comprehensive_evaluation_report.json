@@ -1,0 +1,427 @@
+{
+  "model_name": "RandomForest",
+  "regression_metrics": {
+    "mae": 98.9131154341934,
+    "rmse": 223.55535365662334,
+    "r2": 0.9976757670196474,
+    "mape": 0.8738575365644408
+  },
+  "classification_metrics": {
+    "accuracy": 0.9866666666666667,
+    "precision": 0.9866761875160125,
+    "recall": 0.9866666666666667,
+    "f1_score": 0.9866530935939387,
+    "precision_per_class": [
+      0.9919678714859438,
+      0.9841897233201581,
+      0.9838709677419355
+    ],
+    "recall_per_class": [
+      0.988,
+      0.996,
+      0.976
+    ],
+    "f1_per_class": [
+      0.9899799599198397,
+      0.9900596421471173,
+      0.9799196787148594
+    ],
+    "auc_roc_ovr": 0.9983573333333333
+  },
+  "feature_importance": [
+    {
+      "feature": "size_m2",
+      "native_importance": 0.5989072975518527
+    },
+    {
+      "feature": "is_premium_zone",
+      "native_importance": 0.16388485517111176
+    },
+    {
+      "feature": "price_per_m2",
+      "native_importance": 0.1138989268051586
+    },
+    {
+      "feature": "price_per_bedroom",
+      "native_importance": 0.09362938489874952
+    },
+    {
+      "feature": "bedrooms",
+      "native_importance": 0.027868476075979767
+    },
+    {
+      "feature": "distance_to_business_km",
+      "native_importance": 0.00025922654949003414
+    },
+    {
+      "feature": "age_years",
+      "native_importance": 0.00022795599062408497
+    },
+    {
+      "feature": "distance_ratio",
+      "native_importance": 0.00021595735792990654
+    },
+    {
+      "feature": "distance_to_transit_km",
+      "native_importance": 0.00016652870162988124
+    },
+    {
+      "feature": "bathrooms",
+      "native_importance": 0.00012987386214500385
+    },
+    {
+      "feature": "premium_features_score",
+      "native_importance": 9.334207281223831e-05
+    },
+    {
+      "feature": "view_quality",
+      "native_importance": 7.482575221801924e-05
+    },
+    {
+      "feature": "noise_level",
+      "native_importance": 7.417921851179362e-05
+    },
+    {
+      "feature": "amenities_total",
+      "native_importance": 7.156294650245048e-05
+    },
+    {
+      "feature": "parking_spaces",
+      "native_importance": 5.742565264975562e-05
+    },
+    {
+      "feature": "floor",
+      "native_importance": 5.7167305942854855e-05
+    },
+    {
+      "feature": "zone_Zona 14",
+      "native_importance": 4.646738961619662e-05
+    },
+    {
+      "feature": "has_social",
+      "native_importance": 3.366384862289777e-05
+    },
+    {
+      "feature": "has_pool",
+      "native_importance": 2.8880728613460623e-05
+    },
+    {
+      "feature": "has_gym",
+      "native_importance": 2.533292200035933e-05
+    },
+    {
+      "feature": "balcony",
+      "native_importance": 2.407938401404763e-05
+    },
+    {
+      "feature": "garden",
+      "native_importance": 2.402518765709026e-05
+    },
+    {
+      "feature": "pet_friendly",
+      "native_importance": 2.1640865195408125e-05
+    },
+    {
+      "feature": "age_bucket_6-15",
+      "native_importance": 1.8078085744008683e-05
+    },
+    {
+      "feature": "has_security",
+      "native_importance": 1.634072678036348e-05
+    },
+    {
+      "feature": "age_bucket_16-30",
+      "native_importance": 1.5925082164926454e-05
+    },
+    {
+      "feature": "furnished",
+      "native_importance": 1.5114875348053966e-05
+    },
+    {
+      "feature": "property_type_Casa",
+      "native_importance": 1.4650823420691519e-05
+    },
+    {
+      "feature": "zone_Zona 15",
+      "native_importance": 1.4193942766751926e-05
+    },
+    {
+      "feature": "age_bucket_30+",
+      "native_importance": 1.1455048134024845e-05
+    },
+    {
+      "feature": "zone_Zona 16",
+      "native_importance": 1.026236403098671e-05
+    },
+    {
+      "feature": "has_elevator",
+      "native_importance": 8.627955412884509e-06
+    },
+    {
+      "feature": "zone_Zona 18",
+      "native_importance": 6.7978899503983375e-06
+    },
+    {
+      "feature": "zone_Zona 10",
+      "native_importance": 6.61750641668663e-06
+    },
+    {
+      "feature": "zone_Zona 11",
+      "native_importance": 6.206332861969437e-06
+    },
+    {
+      "feature": "zone_Zona 4",
+      "native_importance": 5.123389653294851e-06
+    },
+    {
+      "feature": "zone_Zona 13",
+      "native_importance": 4.776215845215726e-06
+    },
+    {
+      "feature": "zone_Zona 6",
+      "native_importance": 4.686034781877924e-06
+    },
+    {
+      "feature": "zone_Zona 5",
+      "native_importance": 3.817881036268828e-06
+    },
+    {
+      "feature": "zone_Zona 3",
+      "native_importance": 3.530563479596812e-06
+    },
+    {
+      "feature": "zone_Zona 2",
+      "native_importance": 2.6501399602858863e-06
+    },
+    {
+      "feature": "zone_Zona 9",
+      "native_importance": 2.235247492948378e-06
+    },
+    {
+      "feature": "zone_Zona 7",
+      "native_importance": 2.1455090184092045e-06
+    },
+    {
+      "feature": "zone_Zona 8",
+      "native_importance": 2.0139956869431453e-06
+    },
+    {
+      "feature": "zone_Zona 1",
+      "native_importance": 1.5074093747280365e-06
+    },
+    {
+      "feature": "zone_Zona 17",
+      "native_importance": 1.2599214500295145e-06
+    },
+    {
+      "feature": "zone_Zona 12",
+      "native_importance": 9.068201607899236e-07
+    }
+  ],
+  "cv_results": {
+    "regression": {
+      "mae": [
+        302.01655807893695,
+        215.1065317253115,
+        135.33507656858347,
+        109.94474728598279,
+        85.85555996457103
+      ],
+      "rmse": [
+        542.3228502832183,
+        423.8283114840019,
+        259.133503164399,
+        213.45495097865987,
+        212.58423275608607
+      ],
+      "r2": [
+        0.9852488662578694,
+        0.990873276579555,
+        0.9964404598963141,
+        0.9976066952417217,
+        0.9976365659507238
+      ],
+      "mae_mean": 169.65169472467716,
+      "mae_std": 79.18452034633806,
+      "rmse_mean": 330.264769733273,
+      "rmse_std": 131.3587952867141,
+      "r2_mean": 0.9935611727852368,
+      "r2_std": 0.004849424738763775
+    },
+    "classification": {
+      "accuracy": [
+        0.9639794168096055,
+        0.9588336192109777,
+        0.9897084048027445,
+        0.9656946826758147,
+        0.9862778730703259
+      ],
+      "f1": [
+        0.963947468863459,
+        0.9588978162960289,
+        0.9897084048027445,
+        0.9657778413031916,
+        0.986254536932244
+      ],
+      "precision": [
+        0.9639918582931611,
+        0.9590917628734503,
+        0.9897084048027445,
+        0.9659665093774648,
+        0.9862939559990923
+      ],
+      "recall": [
+        0.9639794168096055,
+        0.9588336192109777,
+        0.9897084048027445,
+        0.9656946826758147,
+        0.9862778730703259
+      ],
+      "accuracy_mean": 0.9728987993138937,
+      "accuracy_std": 0.012576537070204724,
+      "f1_mean": 0.9729172136395337,
+      "f1_std": 0.012552280700125191,
+      "precision_mean": 0.9730104982691825,
+      "precision_std": 0.01248963709165333,
+      "recall_mean": 0.9728987993138937,
+      "recall_std": 0.012576537070204724
+    }
+  },
+  "error_analysis": {
+    "mean_abs_error": 98.9131154341934,
+    "mean_pct_error": 0.8738575365644408,
+    "outliers_count": 38,
+    "edge_cases": [
+      {
+        "true_price": 16707.97,
+        "pred_price": 13475.373824633143,
+        "error": -3232.596175366858,
+        "abs_error": 3232.596175366858,
+        "pct_error": 19.34762975613948,
+        "is_premium_zone": 0,
+        "property_type": "Apartamento",
+        "zone": "Zona 9",
+        "is_outlier": true,
+        "error_type": "underestimate"
+      },
+      {
+        "true_price": 21456.73,
+        "pred_price": 23385.28106223809,
+        "error": 1928.5510622380898,
+        "abs_error": 1928.5510622380898,
+        "pct_error": 8.988094002385685,
+        "is_premium_zone": 1,
+        "property_type": "Casa",
+        "zone": "Carretera al Salvador",
+        "is_outlier": true,
+        "error_type": "overestimate"
+      },
+      {
+        "true_price": 8963.33,
+        "pred_price": 7785.420902930399,
+        "error": -1177.9090970696006,
+        "abs_error": 1177.9090970696006,
+        "pct_error": 13.141422853667114,
+        "is_premium_zone": 1,
+        "property_type": "Apartamento",
+        "zone": "Zona 14",
+        "is_outlier": true,
+        "error_type": "underestimate"
+      },
+      {
+        "true_price": 19505.13,
+        "pred_price": 18340.83081666666,
+        "error": -1164.29918333334,
+        "abs_error": 1164.29918333334,
+        "pct_error": 5.969194685364004,
+        "is_premium_zone": 0,
+        "property_type": "Casa",
+        "zone": "Zona 11",
+        "is_outlier": true,
+        "error_type": "underestimate"
+      },
+      {
+        "true_price": 20911.38,
+        "pred_price": 19765.910881226537,
+        "error": -1145.4691187734643,
+        "abs_error": 1145.4691187734643,
+        "pct_error": 5.477730875597231,
+        "is_premium_zone": 1,
+        "property_type": "Apartamento",
+        "zone": "Zona 14",
+        "is_outlier": true,
+        "error_type": "underestimate"
+      },
+      {
+        "true_price": 26223.58160000004,
+        "pred_price": 25115.58700266672,
+        "error": -1107.9945973333197,
+        "abs_error": 1107.9945973333197,
+        "pct_error": 4.225184089015964,
+        "is_premium_zone": 1,
+        "property_type": "Casa",
+        "zone": "Zona 14",
+        "is_outlier": true,
+        "error_type": "underestimate"
+      },
+      {
+        "true_price": 15821.48,
+        "pred_price": 14798.388849007912,
+        "error": -1023.0911509920879,
+        "abs_error": 1023.0911509920879,
+        "pct_error": 6.466469325196429,
+        "is_premium_zone": 1,
+        "property_type": "Apartamento",
+        "zone": "Zona 14",
+        "is_outlier": true,
+        "error_type": "underestimate"
+      },
+      {
+        "true_price": 24136.23,
+        "pred_price": 25010.560125190932,
+        "error": 874.3301251909324,
+        "abs_error": 874.3301251909324,
+        "pct_error": 3.6224800857090464,
+        "is_premium_zone": 1,
+        "property_type": "Casa",
+        "zone": "Zona 15",
+        "is_outlier": true,
+        "error_type": "overestimate"
+      },
+      {
+        "true_price": 12507.68,
+        "pred_price": 13307.047832765566,
+        "error": 799.3678327655653,
+        "abs_error": 799.3678327655653,
+        "pct_error": 6.391016021880678,
+        "is_premium_zone": 1,
+        "property_type": "Casa",
+        "zone": "Carretera al Salvador",
+        "is_outlier": true,
+        "error_type": "overestimate"
+      },
+      {
+        "true_price": 14671.69,
+        "pred_price": 15459.85268218254,
+        "error": 788.1626821825394,
+        "abs_error": 788.1626821825394,
+        "pct_error": 5.371996560604398,
+        "is_premium_zone": 1,
+        "property_type": "Casa",
+        "zone": "Carretera al Salvador",
+        "is_outlier": true,
+        "error_type": "overestimate"
+      }
+    ]
+  },
+  "business_impact": {
+    "accuracy_within_threshold": 0.9973333333333333,
+    "avg_price": 10894.266212133332,
+    "avg_commission_per_listing": 1089.4266212133332,
+    "expected_dom_reduction": 0.15,
+    "monthly_listings": 100,
+    "expected_additional_revenue_monthly": 16297.822253351464,
+    "mean_pct_error": 0.8738575365644408,
+    "median_pct_error": 0.44240948594080676
+  }
+}

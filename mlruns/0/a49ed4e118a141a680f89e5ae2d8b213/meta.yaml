@@ -1,0 +1,14 @@
+artifact_uri: file:///home/hsilv/RentSmart-PricePrediction/mlruns/0/a49ed4e118a141a680f89e5ae2d8b213/artifacts
+end_time: 1763173846267
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a49ed4e118a141a680f89e5ae2d8b213
+run_name: able-gnat-943
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763173841761
+status: 3
+tags: []
+user_id: hsilv
